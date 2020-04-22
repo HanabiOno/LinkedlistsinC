@@ -1,3 +1,6 @@
+#include <stdbool.h> 
+
+
 typedef struct cell {
   int first;
   struct cell *rest;
@@ -5,5 +8,6 @@ typedef struct cell {
 
 list * make_random_list(int length);
 int list_length(list *list);
-void free_list(list *list);
+bool ascending(list *l);  
 void print_list(list *list);
+void free_list(list *list);  
