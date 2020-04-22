@@ -2,6 +2,8 @@
 #include <stdlib.h>
 #include <stdbool.h>
 #include "bst.h"
+#include "linkedlists/list.h"
+#include "linkedlists/list.c"
 
 BT* insert_bst(int i, BT *bst){
   struct node *n;
@@ -44,6 +46,36 @@ bool bst_contains(int i, BT *bst){
   }
 }
 
+list* append(list *left, list *right){
+  if (!left){
+    return right;
+  }
+  if (!right){
+    return left;
+  }
+  list* pleft = left;
+  while(pleft->rest){
+    pleft = pleft->rest;
+  }
+  pleft->rest = right;
+  return left;
+}
+
+
+list* bt_ints_depth_first(BT *bt){
+  if (bt == NULL){
+    return NULL;
+  }
+
+  struct cell *c;
+  c = (struct cell *) malloc(sizeof(struct cell));
+  c->first = bt->item;
+  c->rest = append(bt_ints_depth_first(bt->left),
+                   bt_ints_depth_first(bt->right));
+  return c;
+}
+
+
 void print_bst(BT *bst){
   if (bst != NULL){
     print_bst(bst->left);
@@ -62,6 +94,8 @@ void main(){
       printf("This bst contains: %d\n", i);
     }
   }
+  list* list = make_random_list(20);
+  pust(bt_ints_depth_first(list));
 }
     
   
