@@ -45,3 +45,22 @@ void free_list(list *list) {
     list = next;
   }
 }
+
+bool ascending(list *l){
+  list *next;
+  int curitem;
+  int nextitem;
+
+  next = l->rest;
+  while(next){
+    printf("%d", l->first);
+    curitem = l->first;
+    nextitem = next->first;
+    if (nextitem <= curitem){
+      return false;
+    next = next->rest;
+    }
+  }
+  return true;
+}
+
