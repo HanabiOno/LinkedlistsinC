@@ -43,3 +43,25 @@ bool bst_contains(int i, BT *bst){
     return bst_contains(i, bst->right);
   }
 }
+
+void print_bst(BT *bst){
+  if (bst != NULL){
+    print_bst(bst->left);
+    printf("%d ", bst->item);
+    print_bst(bst->right);
+  }
+}
+
+void main(){
+  BT* bst = bst_insert_randoms(20);
+  print_bst(bst);
+  printf("\n");
+  int i;
+  for (i = 0; i < 50; i++){
+    if (bst_contains(i, bst)){
+      printf("This bst contains: %d\n", i);
+    }
+  }
+}
+    
+  
