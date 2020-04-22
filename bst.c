@@ -28,3 +28,18 @@ BT* bst_insert_randoms(int n){
   }
   return bst;
 }
+
+bool bst_contains(int i, BT *bst){
+  if (bst == NULL){
+    return false;
+  }
+  if (bst->item == i){
+    return true;
+  }
+  if (bst->item>i){
+    return bst_contains(i, bst->left);
+  }
+  if (bst->item<i){
+    return bst_contains(i, bst->right);
+  }
+}
