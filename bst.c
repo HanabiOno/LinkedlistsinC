@@ -16,3 +16,15 @@ BT* insert_bst(int i, BT *bst){
   else {bst->right = insert_bst(i, bst->right);}
   return bst;
 }
+
+BT* bst_insert_randoms(int n){
+  BT *bst;
+  int i;
+  
+  bst = NULL;
+  while(n--){
+    i = rand() % 100;
+    bst = insert_bst(i, bst);
+  }
+  return bst;
+}
