@@ -30,6 +30,7 @@ int list_length(list *list) {
   return length;
 }
 
+//Step 1: returns a Boolean which is true if the elements of the list are (strictly) in ascending order and false otherwise.
 bool ascending(list *l){
   list *next;
   int curitem = l->first;

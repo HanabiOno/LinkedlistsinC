@@ -1,5 +1,6 @@
 #include "linkedlists/list.c"
 
+//Step 2: Design a C data structure for a node in a BT which contains integers.
 typedef struct node {
   int item;
   struct node *left;

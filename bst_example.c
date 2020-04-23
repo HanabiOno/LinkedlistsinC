@@ -6,7 +6,7 @@
 
 void main(){
   int n;
-  printf("How long do you want the test BST to be?\n");
+  printf("What size do you want the test BST to be?\n");
   scanf("%d", &n);
   printf("This is the order in which random nodes are put in the BST:\n");
   BT* bst = bst_insert_randoms(n, true);
