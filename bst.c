@@ -19,7 +19,7 @@ BT* insert_bst(int i, BT *bst){
 }
 
 //Use srand instead of rand to produce different numbers everything you run it.
-BT* bst_insert_randoms(int n){
+BT* bst_insert_randoms(int n, bool print){
   BT *bst;
   int i;
   
@@ -27,17 +27,30 @@ BT* bst_insert_randoms(int n){
   srand(time(0));
   while(n--){
     i = rand() % 100;
-    printf("%d ",i);
+    if (print){ printf("%d ", i);}
     bst = insert_bst(i, bst);
   }
   return bst;
 }
+
+BT* bst_insert_inorder(int n){
+  BT *bst;
+  int i;
+
+  bst=NULL;
+  for(i = 0; i < n; i++){
+    bst = insert_bst(i,bst);
+  }
+  return bst;
+}
+
 
 bool bst_contains(int i, BT *bst){
   if (bst == NULL){
     return false;
   }
   if (bst->item == i){
+    BT* bst_i = bst;
     return true;
   }
   if (bst->item>i){
@@ -76,14 +89,15 @@ list* bt_ints_depth_first(BT *bt){
                    bt_ints_depth_first(bt->right));
   return c;
 }
+    
 
-int bt_depth(struct node *n){
-  if (n == NULL){
+int bt_depth(BT *bt){
+  if (bt == NULL){
     return 0;
   }
   else {
-    int ldepth = bt_depth(n->left);
-    int rdepth = bt_depth(n->right);
+    int ldepth = bt_depth(bt->left);
+    int rdepth = bt_depth(bt->right);
     if (ldepth > rdepth) {
       return(ldepth+1);
     }
@@ -91,8 +105,7 @@ int bt_depth(struct node *n){
       return(rdepth+1);
     }
   }
-}
-
+}      
 
 void print_bst(BT *bst){
   if (bst != NULL){
