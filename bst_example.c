@@ -4,13 +4,18 @@
 #include <time.h>
 #include "bst.c"
 
-
 void main(){
   int n;
   printf("How long do you want the test BST to be?\n");
   scanf("%d", &n);
   printf("This is the order in which random nodes are put in the BST:\n");
   BT* bst = bst_insert_randoms(n);
+  struct node *root;
+  root = (struct node *) malloc(sizeof(struct node));
+  root->item = bst->item;
+  root->left = bst->left;
+  root->right = bst->right;
+  printf("\nThis is the depth of the tree: %d",bt_depth(root));
   printf("\nThis is the bst in order:\n");
   print_bst(bst);
   printf("\nThis BST contains the following digits in the range [0,50):\n");

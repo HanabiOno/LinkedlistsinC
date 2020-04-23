@@ -1,9 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
+#include <time.h>
 #include "bst.h"
-#include "linkedlists/list.c"
-#include "time.h"
 
 BT* insert_bst(int i, BT *bst){
   struct node *n;
@@ -78,6 +77,21 @@ list* bt_ints_depth_first(BT *bt){
   return c;
 }
 
+int bt_depth(struct node *n){
+  if (n == NULL){
+    return 0;
+  }
+  else {
+    int ldepth = bt_depth(n->left);
+    int rdepth = bt_depth(n->right);
+    if (ldepth > rdepth) {
+      return(ldepth+1);
+    }
+    else {
+      return(rdepth+1);
+    }
+  }
+}
 
 
 void print_bst(BT *bst){
