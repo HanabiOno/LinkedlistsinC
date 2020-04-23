@@ -1,4 +1,4 @@
-# Linkedlists
+# C Programming Assignment
 
 [Assignment 5] (https://advprog.auc-computing.nl/assignment5.html) for Advanced Programming:
 Linked lists in C and B(S)T
