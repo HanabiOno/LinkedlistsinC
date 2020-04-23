@@ -2,12 +2,13 @@
 #include <stdlib.h>
 #include "list.h"
 #include <stdbool.h>
-
+#include <time.h>
 
 list* make_random_list(int length) {
   list *list;
   struct cell *c;
 
+  srand(time(0));
   list = NULL;
   while (length--) {
     c = (struct cell *) malloc(sizeof(struct cell));
@@ -31,18 +32,23 @@ int list_length(list *list) {
 
 bool ascending(list *l){
   list *next;
-  int curitem;
+  int curitem = l->first;
   int nextitem;
+  bool out;
+  list *listcheck = l;
 
-  next = l->rest;
+  if (list_length(l)<=1){
+    return false;
+  }
+  next = listcheck->rest; 
   while(next){
-    printf("%d", l->first);
-    curitem = l->first;
     nextitem = next->first;
     if (nextitem <= curitem){
       return false;
-    next = next->rest;
     }
+    listcheck = next;
+    curitem = listcheck->first;
+    next = next->rest;
   }
   return true;
 }
