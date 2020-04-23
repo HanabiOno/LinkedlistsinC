@@ -2,8 +2,8 @@
 #include <stdlib.h>
 #include <stdbool.h>
 #include "bst.h"
-#include "linkedlists/list.h"
 #include "linkedlists/list.c"
+#include "time.h"
 
 BT* insert_bst(int i, BT *bst){
   struct node *n;
@@ -19,13 +19,16 @@ BT* insert_bst(int i, BT *bst){
   return bst;
 }
 
+//Use srand instead of rand to produce different numbers everything you run it.
 BT* bst_insert_randoms(int n){
   BT *bst;
   int i;
   
   bst = NULL;
+  srand(time(0));
   while(n--){
     i = rand() % 100;
+    printf("%d ",i);
     bst = insert_bst(i, bst);
   }
   return bst;
@@ -76,6 +79,7 @@ list* bt_ints_depth_first(BT *bt){
 }
 
 
+
 void print_bst(BT *bst){
   if (bst != NULL){
     print_bst(bst->left);
@@ -85,17 +89,23 @@ void print_bst(BT *bst){
 }
 
 void main(){
-  BT* bst = bst_insert_randoms(20);
+  int n;
+  printf("How long do you want the test BST to be?\n");
+  scanf("%d", &n);
+  printf("This is the order in which random nodes are put in the BST:\n");
+  BT* bst = bst_insert_randoms(n);
+  printf("\nThis is the bst in order:");
   print_bst(bst);
-  printf("\n");
+  printf("\nThis BST contains the following digits in the range [0,50):\n");
   int i;
   for (i = 0; i < 50; i++){
     if (bst_contains(i, bst)){
-      printf("This bst contains: %d\n", i);
+      printf("%d ", i);
     }
   }
   list* list = make_random_list(20);
-  pust(bt_ints_depth_first(list));
+  printf("\nThis is the bst depth first order (according to wikipedia):/n");
+  print_list(bt_ints_depth_first(bst));
 }
     
   
