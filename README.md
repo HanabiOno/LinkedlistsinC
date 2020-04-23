@@ -18,7 +18,7 @@ Step 2 in the file "bst.h". The rest of the steps are in the file "bst.c".
 >In order to test the functions please give the following commands:
     $ make bst_example
     $ bst_example
-      What size do you want the test BST to be? <size_of_choice>
+      > What size do you want the test BST to be? <size_of_choice>
     $ make clean
 
 ####Remarks
