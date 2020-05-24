@@ -1,10 +1,9 @@
-# C Programming Assignment
+# C Programming 
 
-[Assignment 5] (https://advprog.auc-computing.nl/assignment5.html) for Advanced Programming:
 Linked lists in C and B(S)T
 
 ###linked lists in C
-The first step of the assignment making a function: ascending is under the file "linkedlists/list.c"
+The first step is making a function: ascending is under the file "linkedlists/list.c"
 
 >In order to test the function please go to the linkedlist directory and give the following commands:
     $ make list_example
